@@ -1,0 +1,6 @@
+numpy>=1.20
+scipy>=1.7
+# Sec. X quantum-simulation benchmarks (qsim_demo.py, qsim_trotter.py, make_fig_qsim.py):
+qiskit>=1.0
+qiskit-aer>=0.13
+matplotlib>=3.5
