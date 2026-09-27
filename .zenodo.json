@@ -1,1 +1,22 @@
-
+{
+  "title": "Quantum-information fingerprints of partial dynamical symmetry in the interacting boson model",
+  "upload_type": "software",
+  "description": "Source code for the numerical calculations and analyses associated with the manuscript \"Quantum-information fingerprints of partial dynamical symmetry in the interacting boson model\" by Dhritimalya Roy.",
+  "creators": [
+    {
+      "name": "Roy, Dhritimalya",
+      "affiliation": "Department of Physics, Presidency University, Kolkata 700073, India" , "Department of Mathematics, Jadavpur University, Kolkata 700032, India"
+    }
+  ],
+  "keywords": [
+    "interacting boson model",
+    "partial dynamical symmetry",
+    "quantum information",
+    "nuclear structure",
+    "quantum simulation",
+    "SU(3)",
+    "U(5)",
+    "O(6)"
+  ],
+  "license": "MIT"
+}
