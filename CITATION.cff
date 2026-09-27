@@ -1,1 +1,25 @@
+cff-version: 1.2.0
+title: "Quantum-information fingerprints of partial dynamical symmetry in the interacting boson model"
+message: "If you use this software, please cite the associated publication and the archived software release."
 
+type: software
+
+authors:
+  - family-names: Roy
+    given-names: Dhritimalya
+
+version: 1.0.0
+
+repository-code: "https://github.com/rdhritimalya-cmd/PDS-QI"
+
+keywords:
+  - interacting boson model
+  - partial dynamical symmetry
+  - quantum information
+  - nuclear structure
+  - quantum simulation
+  - SU(3)
+  - U(5)
+  - O(6)
+
+license: MIT
