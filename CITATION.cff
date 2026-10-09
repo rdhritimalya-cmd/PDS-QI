@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 
-title: "Quantum-information fingerprints of partial dynamical symmetry in the interacting boson model"
+title: "State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model"
 
 message: "If you use this software, please cite the associated publication and the archived software release."
 
@@ -11,7 +11,7 @@ authors:
     given-names: Dhritimalya
     affiliation: "Department of Physics, Presidency University, Kolkata 700073, India; Department of Mathematics, Jadavpur University, Kolkata 700032, India"
 
-version: 1.0.0
+version: 1.1.0
 
 repository-code: "https://github.com/rdhritimalya-cmd/PDS-QI"
 

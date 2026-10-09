@@ -1,132 +1,102 @@
-# Quantum-information fingerprints of partial dynamical symmetry in the IBM
+# State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model
 
-Code to reproduce the results of
+Code to reproduce and inspect the numerical calculations associated with:
 
-> D. Roy, *Quantum-information fingerprints of partial dynamical symmetry in the
-> interacting boson model* (2026).
+> D. Roy, *State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model* (2026).
 
-The scripts diagonalize the $sd$-interacting boson model in the $m$-scheme boson
-Fock basis and compute the symmetry-label variance, block coherence, block
-purity, cone rigidity, and the supporting quantum-information measures reported
-in the paper. Everything runs on a laptop with NumPy and SciPy; no quantum
-hardware or Qiskit is required to reproduce the exact-diagonalization results
-(Secs. II–IX). The variational and Trotter benchmarks of Sec. X use Qiskit Aer
-and are provided separately.
+The repository implements calculations for the \(sd\)-interacting boson model, including exact diagonalization, symmetry-label variance, block coherence and purity, cone rigidity, controlled symmetry breaking, critical-point analyses, the \(^{168}\mathrm{Er}\) application, and quantum-simulation benchmarks.
+
+The classical exact-diagonalization calculations use NumPy and SciPy. The quantum-simulation and hardware-oriented scripts have additional Qiskit dependencies. A real-hardware script is included, but access to IBM Quantum hardware and suitable credentials is required to submit a new device run; the included `kingston_device_N3.json` is a recorded result, not a guarantee that the hardware run can be repeated unchanged.
 
 ## Requirements
 
-- Python ≥ 3.9
-- NumPy, SciPy
-- (optional, for the Sec. X quantum-simulation benchmarks) Qiskit + Qiskit Aer
+- Python 3.9 or newer
+- NumPy, SciPy, Matplotlib
+- Optional quantum-simulation dependencies: Qiskit, Qiskit Aer, pylatexenc
+- Optional IBM hardware workflow: Qiskit IBM Runtime and an appropriately configured IBM Quantum account
 
-Install the core dependencies with
+Install the listed dependencies with:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
+The requirements file includes the optional quantum-simulation packages for convenience. Classical calculations do not require access to quantum hardware.
+
 ## Quick start
 
-Run the full reproduction suite:
+Run the repository's existing reproduction suite:
 
-```
+```bash
 python run_all.py
 ```
 
-This executes every script below and prints a pass/fail summary. Individual
-scripts can be run directly, e.g. `python er168_anchor.py`.
+This runs the checks wired into `run_all.py`; it does **not** automatically execute every script in this repository. Run individual analyses as needed, for example:
 
-## Files
+```bash
+python test_conventions.py
+python casimir3.py
+python threshold_scan.py
+python qsim_echo.py
+python label_locality.py
+python qsim_hardware_noise.py
+```
 
-Core library:
+Some calculations may take appreciable time. Qiskit- and IBM Runtime-dependent scripts require the optional dependencies listed above.
 
-- `ibm_pds.py` — $sd$-IBM Fock basis, exact Clebsch–Gordan coefficients, boson
-  operators, the SU(3)-PDS Hamiltonian of Leviatan [PRL 77, 818 (1996)], the
-  SU(3) quadrupole and quadratic Casimir, and the irrep enumeration.
-- `critical.py` — Leviatan's first- and second-order critical Hamiltonians
-  [PRL 98, 242502 (2007)] and the O(5) Casimir.
-- `run_step0.py` — reduced-density-matrix and entropy helpers (the $s|d$
-  bipartition), used by the entanglement calculations.
+## Main modules
 
-Reproduction / verification:
+### Core IBM and symmetry calculations
 
-- `test_conventions.py` — convention self-tests: the $\theta_2$ normalization
-  identity, integer $L$ and $\tau$, and the SU(3) irrep content.
-- `casimir3.py` — builds the cubic SU(3) Casimir $C_3$, verifies
-  $[C_3, Q]\approx 0$, shows it splits the conjugate-irrep pairs that make $C_2$
-  degenerate at $N=6,9,12,15$, and confirms every $\mathrm{Var}\,C_2=0$ state
-  also has $\mathrm{Var}\,C_3=0$ (no count changes). Reproduces the check in
-  Sec. III.
-- `threshold_scan.py` — classification-threshold robustness (Table I).
-- `rigidity_cone.py` — cone rigidity at the stable SU(3)-PDS point (Fig. 2).
-- `q2_definitive.py` — first-order criticality; confirms the consistent-$Q$ line
-  has no interior exact-label states while $H(\beta_0=\sqrt2)$ does (Fig. 3).
-- `q2_secondorder.py` — second-order criticality; the O(5) seniority-graded
-  entanglement ladder (Fig. 4).
-- `kremer.py` — verifies the O(6) $\sigma$-label machinery used in the bridge.
-- `kremer_bridge.py` — the purity/coherence bridge (Fig. 5); reproduces
-  $\Delta\sigma_{\rm gs}=2.47$ at the U(5) limit ($N=14$) and shows the O(6)
-  block purity and $s|d$ entanglement are independent axes.
-- `magic.py` — exact stabilizer 2-Rényi entropy; magic is a separate axis from
-  the label variance (Sec. VIII).
-- `er168_anchor.py` — the $^{168}$Er anchor at Leviatan's fitted parameters:
-  exact-label vs closed-form counts, ground- and $\gamma$-band energies, the
-  $\beta$-band SU(3) admixtures, and the parameter-free $\gamma\!\to\! g$
-  $B(E2)$ ratios (Sec. VII).
-- `run_step0_v2.py` — the Step-0 classical baseline, which independently flags
-  the two irrep-pure but non-closed-form states per spectrum.
+- `ibm_pds.py` — \(sd\)-IBM Fock basis, boson operators, SU(3)-PDS Hamiltonian, quadrupole and Casimir operators, and irrep enumeration.
+- `critical.py` — first- and second-order critical Hamiltonians and the O(5) Casimir.
+- `run_step0.py`, `run_step0_v2.py` — reduced-density-matrix/entropy helpers and classical baseline checks.
+- `casimir3.py` — cubic SU(3) Casimir and conjugate-irrep checks.
+- `threshold_scan.py` — classification-threshold robustness.
+- `rigidity_cone.py` — response along PDS-preserving and symmetry-breaking directions.
+- `q2_definitive.py`, `q2_secondorder.py` — first- and second-order critical-point analyses.
+- `robustness.py`, `false_positive.py`, `pds_classification_analysis.py` — controlled symmetry breaking, non-PDS controls, and related numerical analyses.
+- `label_locality.py` — low-weight Pauli-label and encoding-resource analyses.
+- `kremer.py`, `kremer_bridge.py` — O(6) label machinery and the purity/coherence comparison.
+- `er168_anchor.py` — the \(^{168}\mathrm{Er}\) application, including SU(3) admixtures and transition-strength ratios.
+- `magic.py` — stabilizer 2-Rényi entropy.
+- `figdata.py` — shared figure and analysis helpers.
+
+### Quantum-simulation and encoding modules
+
+These scripts support the quantum-simulation discussion in Section 11 of the manuscript:
+
+- `qsim_demo.py` — state preparation and variational benchmarks.
+- `qsim_trotter.py` — Trotterized time evolution and step-size scaling.
+- `qsim_echo.py` — Casimir Loschmidt-echo diagnostic.
+- `qsim_hardware_noise.py` — noise-model simulations.
+- `ibm_encodings.py` — alternative encodings and spectrum checks.
+- `hardware_run_kingston.py` — IBM Kingston workflow, including local simulation mode and an optional real-device mode.
+- `kingston_device_N3.json` — recorded hardware-run results.
+- `label_locality.py` — encoding-resource and Pauli-operator analysis.
+
+### Figure-generation scripts
+
+The repository includes figure-generation scripts such as `mk_fig_gate.py`, `mk_fig_cone.py`, `mk_fig_q2.py`, `mk_fig_q2so.py`, `mk_fig_kremer.py`, `mk_fig_er168.py`, `make_fig_robustness.py`, `make_fig_additions.py`, `make_fig_kingston.py`, and `make_fig_qsim.py`. Check each script's source for its exact inputs and output filenames before running it. Quantum-simulation figure generators may require Qiskit dependencies.
 
 ## Conventions
 
-Operator normalizations are fixed by the identity
-$P_0^\dagger \tilde P_0 + P_2^\dagger\cdot\tilde P_2 = -C_2[\mathrm{SU(3)}]
-+ 2\hat N(2\hat N+3)$ (Leviatan, arXiv:2010.10951), reproduced to $\le
-2\times10^{-13}$ by `test_conventions.py`. All spectra are computed in the $M=0$
-block, which contains one member of every angular-momentum multiplet.
-Degeneracies are resolved by the order-fixed refinement described in the paper
-($L^2$, then the relevant Casimir, then $\hat n_d$).
+Operator normalizations, degeneracy handling, and the \(M=0\) basis conventions are described in the manuscript and exercised by `test_conventions.py`. Numerical zero means a value consistent with the diagonalization or measurement precision; thresholds used for state classification are stated in the manuscript and analysis scripts.
 
-## Section X: quantum-simulation benchmarks (Qiskit)
+## Reproducibility notes
 
-These reproduce the state-preparation and Trotter benchmarks of Sec. X. They
-require `qiskit` and `qiskit-aer` (see `requirements.txt`) and are the only
-scripts that do; everything above runs on NumPy/SciPy alone.
+- Numerical results can depend on the versions of Python and the scientific-computing packages.
+- Variational optimization may follow different optimization paths across runs.
+- Simulated-noise results are not the same as results from a physical quantum processor.
+- `hardware_run_kingston.py` can require IBM account configuration and access to a suitable backend when run in device mode.
+- The JSON file records a previous hardware run; it should be treated as recorded output, not as a substitute for independently rerunning the experiment.
 
-- `qsim_demo.py` — encodes the N=3 first-order critical block on 4 qubits,
-  verifies the mapped Pauli Hamiltonian reproduces the exact spectrum, prepares
-  all ten eigenstates by VQE/VQD (hardware-efficient real ansatz), and prints
-  `max|dE|` against exact diagonalization (target < 1e-4; obtained ~1e-13). It
-  also provides `degeneracy_resolve_prepared`, the within-window Casimir
-  diagonalization that recovers the sharp solvable/mixed split of Fig. 7(a).
-- `qsim_trotter.py` — builds the Trotterized propagator and reports first- and
-  second-order (Strang) infidelity versus step count, showing the s^-2 and s^-4
-  scaling of Fig. 7(b).
-- `make_fig_qsim.py` — regenerates `fig_qsim.png` (Fig. 7) and `fig_ansatz.png`
-  (Fig. 8) from the two modules above. The VQD run is cached to
-  `prepared_N3.pkl` on first execution.
+## Citation
 
-Note: VQD uses a multi-restart optimizer, so the prepared-state energies are
-reproducible to the stated tolerance but individual optimizer paths vary run to
-run; the physics conclusions (encoding exactness, max|dE|, the degeneracy
-resolution) are deterministic.
+If you use this software, cite the associated manuscript and the exact archived software version used.
+
+The source code for version 1.1.0 is intended to be archived on Zenodo after its GitHub release. Add the version-specific DOI here after Zenodo has completed archiving.
 
 ## License
 
-Released under the MIT License (see `LICENSE`).
-
-## Regenerating the figures
-
-Each manuscript figure has a generator that reads directly from the code above,
-so every panel matches its caption and no plot carries an internal working title:
-
-- `mk_fig_gate.py`      -> `fig_gate_N10.png`            (Fig. 1)
-- `mk_fig_cone.py`      -> `fig_cone_N10.png`            (Fig. 2)
-- `mk_fig_q2.py`        -> `fig_q2_N10.png`              (Fig. 3)
-- `mk_fig_q2so.py`      -> `fig_q2_secondorder_N10.png`  (Fig. 4)
-- `mk_fig_kremer.py`    -> `fig_q3_kremer_N12.png`       (Fig. 5)
-- `mk_fig_er168.py`     -> `fig_er168_anchor.png`        (Fig. 6)
-- `make_fig_qsim.py`    -> `fig_qsim.png`, `fig_ansatz.png` (Figs. 7, 8; needs Qiskit)
-
-`figdata.py` holds the shared helpers (degeneracy refinement, label variance,
-s|d entropy). Figs. 7 and 8 additionally require `qiskit`, `qiskit-aer` and
-`pylatexenc` (for the circuit drawer).
+Released under the MIT License. See `LICENSE`.

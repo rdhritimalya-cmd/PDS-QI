@@ -1,0 +1,48 @@
+{
+  "backend": "ibm_kingston",
+  "backend_version": "1.0.0",
+  "job_id": "db2u5su8v0ts73c3i75g",
+  "run_date": "2026-10-07T06:13:08Z",
+  "qiskit_version": "2.5.2",
+  "qiskit_ibm_runtime_version": "0.50.0",
+  "is_fake": false,
+  "N": 3,
+  "shots": 4000,
+  "resilience": 2,
+  "mitigation": "TREX readout twirling + zero-noise extrapolation, no symmetry post-selection",
+  "error_note": "VarC2_err is conservative: propagated as if <C2> and <C2^2> were independent (ignores the positive C2-C2^2 covariance that reduces the variance of the difference).",
+  "states": [
+    {
+      "k": 1,
+      "kind": "solvable",
+      "physical_qubits": [73, 79, 72, 74],
+      "transpiled_depth": 61,
+      "transpiled_2q_gates": 15,
+      "exact_labvar": 2.2737367544323206e-12,
+      "C2": 53.3325813661948,
+      "C2_err": 1.120,
+      "C2sq": 2880.4183911964064,
+      "C2sq_err": 64.35,
+      "VarC2": 36.05415601461755,
+      "VarC2_err": 135.737
+    },
+    {
+      "k": 0,
+      "kind": "mixed",
+      "physical_qubits": [148, 60, 47, 21],
+      "transpiled_depth": 0,
+      "transpiled_2q_gates": 0,
+      "exact_labvar": 240.0,
+      "C2": 30.08422744114362,
+      "C2_err": 0.885,
+      "C2sq": 1141.4484540975175,
+      "C2sq_err": 56.93,
+      "VarC2": 236.3877133670586,
+      "VarC2_err": 77.959
+    }
+  ],
+  "contrast_min_mix_over_max_solv": 6.556462263912632,
+  "mixed_nonzero_significance_sigma": 3.03,
+  "solvable_consistent_with_zero_sigma": 0.27,
+  "direct_contrast_significance_sigma": 1.28
+}
