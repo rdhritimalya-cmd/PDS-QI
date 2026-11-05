@@ -1,7 +1,7 @@
 {
-  "title": "State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model",
+  "title": "Code and data for: Symmetry purity from two Casimir moments: partial dynamical symmetry in the interacting boson model, from exact spectra to a quantum processor",
   "upload_type": "software",
-  "description": "Source code for the numerical calculations and analyses associated with the manuscript \"State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model\" by Dhritimalya Roy.",
+  "description": "Source code, verification scripts, logs and the recorded IBM Quantum (ibm_kingston) output for the manuscript \"Symmetry purity from two Casimir moments: partial dynamical symmetry in the interacting boson model, from exact spectra to a quantum processor\" by Dhritimalya Roy (arXiv:2608.04486; revised version). Version 2.0.0 accompanies the revised manuscript, whose earlier title was \"State-resolved quantum-information fingerprints of partial dynamical symmetry in the interacting boson model\".",
   "creators": [
     {
       "name": "Roy, Dhritimalya",
@@ -11,12 +11,21 @@
   "keywords": [
     "interacting boson model",
     "partial dynamical symmetry",
-    "quantum information",
+    "Casimir variance",
+    "symmetry purity",
     "nuclear structure",
     "quantum simulation",
     "SU(3)",
     "U(5)",
     "O(6)"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "version": "2.0.0",
+  "related_identifiers": [
+    {
+      "identifier": "arXiv:2608.04486",
+      "relation": "isSupplementTo",
+      "scheme": "arxiv"
+    }
+  ]
 }

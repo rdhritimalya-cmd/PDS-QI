@@ -10,7 +10,7 @@
   "shots": 4000,
   "resilience": 2,
   "mitigation": "TREX readout twirling + zero-noise extrapolation, no symmetry post-selection",
-  "error_note": "VarC2_err is conservative: propagated as if <C2> and <C2^2> were independent (ignores the positive C2-C2^2 covariance that reduces the variance of the difference).",
+  "error_note": "VarC2_err is propagated as if <C2> and <C2^2> were estimated independently; the estimator does not return their covariance, which could change the true error in either direction.",
   "states": [
     {
       "k": 1,

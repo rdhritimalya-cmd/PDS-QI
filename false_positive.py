@@ -1,6 +1,6 @@
 """
 false_positive.py  --  systematic false-positive test of the label-variance
-diagnostic: the fingerprint identifies PDS-selected states within a PDS Hamiltonian
+diagnostic: the Casimir variance identifies PDS-selected states within a PDS Hamiltonian
 family; it is not a universal detector that fires on arbitrary Hamiltonians.
 
 We scan generic consistent-Q IBM Hamiltonians across the Casten triangle,
@@ -10,7 +10,7 @@ at many random (xi, chi) points. Away from the SU(3) vertex (chi = -sqrt7/2,
 xi = 1) these are NOT PDS-constructed. We count the SU(3)-exact-label eigenstates
 Var C2[SU(3)] < 1e-6, excluding the trivial n_d=0 and n_d=N multiplets that carry
 an exact label at any point. A universal "detector" would light up everywhere; a
-genuine PDS fingerprint should find essentially none.
+genuine PDS measure should find essentially none.
 
 Requires: numpy, ibm_pds.
 """

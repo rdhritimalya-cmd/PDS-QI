@@ -1,0 +1,20 @@
+== (1) B(E2) ratio independence of theta/alpha, 168Er N=16
+  theta/alpha=0.0001: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=1.0: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=4.261: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=100.0: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+== (5) small-eps exponent for eps*C[O5], N=10
+  eps=1e-06 meanVar=1.445e-09
+  eps=1e-05 meanVar=1.424e-07
+  eps=1e-04 meanVar=1.398e-05
+  eps=1e-03 meanVar=1.196e-03
+  eps=2e-03 meanVar=4.197e-03
+  local exponents: [1.99 1.99 1.93 1.81]
+  max |eigenvalue| of C[O5] on the block: 130.00000000000014
+== (6) second-order point N=10: tau, n_d and sigma purity
+  tau-pure 203/203, nd-pure 41, sigma-pure 41
+  tau of nd-pure states: {9: 19, 10: 22}  states with tau >= N-1: 41
+== (7) L=3 multiplicity for N=3,4,5
+  N=3: number of L=3 states = 1
+  N=4: number of L=3 states = 1
+  N=5: number of L=3 states = 2

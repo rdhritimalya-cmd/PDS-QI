@@ -74,18 +74,18 @@ def no_cheap_label(N=3, verbose=True):
     cand = [r for r in rows if r[0] > 0.5]
     best_margin = max((r[2] for r in cand), default=float('-inf'))
     if verbose:
-        print(f"(B) No cheap label  (N={N}, {len(solv)} solvable / {len(mixed)} mixed), "
+        print(f"(B) No cheap label  (N={N}, {len(solv)} SU(3)-pure / {len(mixed)} SU(3)-mixed), "
               f"scanned {len(labels)} weight<=2 Paulis.")
-        print("    Paulis with the highest |<P>| on the solvable set (rigidity requirement):")
+        print("    Paulis with the highest |<P>| on the SU(3)-pure set:")
         for (ms, mm, mar, s) in by_rigidity[:5]:
             print(f"      {s}: min|<P>|solv={ms:.3f}  max|<P>|mix={mm:.3f}  margin={mar:+.3f}")
-        print(f"    Best solvable-rigidity over all weight<=2 Paulis: max min|<P>| = {best_min_solv:.3f} "
+        print(f"    Best value on the SU(3)-pure set over all weight<=2 Paulis: max min|<P>| = {best_min_solv:.3f} "
               f"(<< 1).")
-        print(f"    => no low-weight Pauli is even approximately constant on the solvable subspace")
+        print(f"    => no low-weight Pauli is even approximately constant on the SU(3)-pure subspace")
         if cand:
             print(f"       (best margin among {len(cand)} half-rigid candidates: {best_margin:+.3f}).")
         else:
-            print(f"       (not one weight<=2 Pauli is even half-rigid on the solvable set).")
+            print(f"       (not one weight<=2 Pauli is even half-rigid on the SU(3)-pure set).")
     return {"by_rigidity": by_rigidity, "best_min_solv": best_min_solv, "best_margin": best_margin}
 
 
@@ -112,7 +112,7 @@ def encoding_cost(N=3, h0=0.35, h2=1.0, C=0.0523, do_unary=True, verbose=True):
     encs = ['binary'] + (['unary'] if do_unary else [])
     for enc in encs:
         E = Encoded(N, enc)
-        if E.nq > 20:
+        if E.nq > 24:
             res.append((enc, N, E.nq, None, None, None)); continue
         H = build_H_encoded(E, h0, h2, C); w = _weights(H)
         res.append((enc, N, E.nq, len(H.paulis), int(w.max()), float(w.mean())))
@@ -124,13 +124,13 @@ def encoding_cost(N=3, h0=0.35, h2=1.0, C=0.0523, do_unary=True, verbose=True):
             mw_s = '-' if mw is None else str(mw)
             aw_s = '-' if aw is None else f"{aw:.1f}"
             print(f"    {enc:8} {nq:>6} {nt_s:>8} {mw_s:>9} {aw_s:>10}")
-        print("    More qubits -> more terms and higher weight (naive Pauli-Trotterization);")
-        print("    the compressed encoding is gate-cheapest. Structured ladder-op implementation")
-        print("    is left to future work.")
+        print("    unary = structured one-hot mapping (weight-2 ladder terms). The dense register has")
+        print("    the fewest terms but every term can act on the whole register; the per-mode")
+        print("    encodings keep weight <= 8 (four ladder operators) at the price of many more terms.")
     return res
 
 
 if __name__ == "__main__":
     no_cheap_label(N=3)
     encoding_cost(N=2, do_unary=True)
-    encoding_cost(N=3, do_unary=False)   # unary N=3 = 24 qubits, skipped for speed
+    encoding_cost(N=3, do_unary=True)    # structured unary at N=3: 24 qubits, about a minute

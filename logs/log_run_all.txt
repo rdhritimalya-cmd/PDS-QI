@@ -1,0 +1,359 @@
+======================================================================
+RUN  test_conventions.py
+     Clebsch-Gordan / Casimir convention self-tests (Sec. II)
+======================================================================
+
+================ N = 3 ================
+dim[N] = 56
+[CHECK 1] theta2 identity max|LHS-RHS| = 1.066e-14
+[CHECK 2] L2 -> L values: max deviation from integer = 5.107e-15; L range -0.00..6.00
+[CHECK 3] C2 distinct eigenvalues: 3; unmatched to f2(l,m): 0
+   irreps present: [(6, 0), (2, 2), (0, 0)]
+[CHECK 4] solvable energies found in spectrum: 7/7 (naive nearest-eigenvalue match; degeneracy-aware check in full run)
+
+================ N = 4 ================
+dim[N] = 126
+[CHECK 1] theta2 identity max|LHS-RHS| = 2.842e-14
+[CHECK 2] L2 -> L values: max deviation from integer = 1.421e-14; L range -0.00..8.00
+[CHECK 3] C2 distinct eigenvalues: 4; unmatched to f2(l,m): 0
+   irreps present: [(8, 0), (4, 2), (4, 0), (2, 0)]
+[CHECK 4] solvable energies found in spectrum: 11/11 (naive nearest-eigenvalue match; degeneracy-aware check in full run)
+
+================ N = 5 ================
+dim[N] = 252
+[CHECK 1] theta2 identity max|LHS-RHS| = 2.842e-14
+[CHECK 2] L2 -> L values: max deviation from integer = 2.409e-14; L range -0.00..10.00
+[CHECK 3] C2 distinct eigenvalues: 5; unmatched to f2(l,m): 0
+   irreps present: [(10, 0), (6, 2), (4, 2), (4, 0), (2, 0)]
+[CHECK 4] solvable energies found in spectrum: 16/16 (naive nearest-eigenvalue match; degeneracy-aware check in full run)
+
+======================================================================
+RUN  casimir3.py
+     Cubic Casimir conjugate-irrep check (Sec. III)
+======================================================================
+Conjugate-irrep injectivity check via the cubic Casimir C3[SU(3)].
+A false positive is a state with VarC2=0 but VarC3!=0 (a conjugate-irrep
+mixture masquerading as exact-label). The manuscript claim is zero of these.
+
+stable N= 6: b=0.736485  max|[C3,Q]|=2.3e-13  VarC2=0 -> 24 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+stable N= 8: b=0.736485  max|[C3,Q]|=5.7e-13  VarC2=0 -> 39 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+stable N= 9: b=0.736485  max|[C3,Q]|=9.1e-13  VarC2=0 -> 48 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+stable N=10: b=0.736485  max|[C3,Q]|=1.8e-12  VarC2=0 -> 58 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+stable N=12: b=0.736485  max|[C3,Q]|=4.5e-12  VarC2=0 -> 81 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+
+first  N= 6: b=0.736485  max|[C3,Q]|=2.3e-13  VarC2=0 -> 24 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+first  N= 8: b=0.736485  max|[C3,Q]|=5.7e-13  VarC2=0 -> 39 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+first  N= 9: b=0.736485  max|[C3,Q]|=9.1e-13  VarC2=0 -> 48 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+first  N=10: b=0.736485  max|[C3,Q]|=1.8e-12  VarC2=0 -> 58 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+first  N=12: b=0.736485  max|[C3,Q]|=4.5e-12  VarC2=0 -> 81 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+
+
+======================================================================
+RUN  verify_revision.py
+     All exact-diagonalization numbers of Secs. II-V, Tables I, II, IV
+======================================================================
+
+======== A. arbiter identity and H(sqrt2) relation
+N=3: max|arbiter| = 1.1e-14   max|H(sqrt2) - h2term/2| = 3.6e-15
+N=4: max|arbiter| = 2.8e-14   max|H(sqrt2) - h2term/2| = 7.1e-15
+N=5: max|arbiter| = 2.8e-14   max|H(sqrt2) - h2term/2| = 1.4e-14
+N=8: max|arbiter| = 8.5e-14   max|H(sqrt2) - h2term/2| = 4.3e-14
+N=10: max|arbiter| = 1.7e-13   max|H(sqrt2) - h2term/2| = 5.7e-14
+
+======== B. second-order Hamiltonian commutes with C[O(5)]
+N=10 ||[H, C_O5]||_F = 4.4e-11
+
+======== C. stable SU(3)-PDS point (h0/h2=0.35, C/h2=0.0523)
+  N   dim    I  II  III  frac  maxpure  minmix   medmix
+  4    18   11   1    6  0.67    2e-12    18.1     61.6
+  6    48   22   2   24  0.50    6e-11    28.0    125.3
+  8   105   37   2   66  0.37    4e-11    25.7    242.3
+ 10   203   56   2  145  0.29    6e-10    24.3    369.0
+     thresholds N=10: {1e-10: 52, 1e-08: 58, 1e-06: 58, 0.0001: 58, 0.01: 58, 1.0: 58}
+     Class II: L=16 <C2>=346.0 E=95.7256
+     Class II: L=13 <C2>=256.0 E=181.0186
+ 12   358   79   2  277  0.23    2e-09    23.3    601.7
+ 14   588  106   2  480  0.18    2e-09    22.6   1035.0
+ 16   915  137   2  776  0.15    7e-09    22.1   1577.1
+median mixed variance exponent ~ N^2.32
+
+======== D. first-order critical H(beta0=sqrt2), N=10 (h2=1 on P2(beta0))
+order L2>C2>nd: SU3-pure 58 (tower 56, other 2), nd-pure 2, nd-pure&not SU3 0, mixed in both 145
+    SU3-pure non-tower: E=32.0000 L=16 <C2>=346.0
+    SU3-pure non-tower: E=77.0000 L=13 <C2>=256.0
+    lowest L=0 states: E=[np.float64(-0.0), np.float64(-0.0), np.float64(13.030409)], <nd>/N=[np.float64(0.0), np.float64(0.632), np.float64(0.384)]
+    max pure VarC2 5.5e-10, min mixed VarC2 51.0
+order L2>nd>C2: SU3-pure 56 (tower 54, other 2), nd-pure 4, nd-pure&not SU3 2, mixed in both 145
+    U(5)-pure: E=-0.0000 L=0 nd=0.00
+    U(5)-pure: E=57.0000 L=3 nd=3.00
+    SU3-pure non-tower: E=32.0000 L=16 <C2>=346.0
+    SU3-pure non-tower: E=77.0000 L=13 <C2>=256.0
+    lowest L=0 states: E=[np.float64(-0.0), np.float64(-0.0), np.float64(13.030409)], <nd>/N=[np.float64(0.0), np.float64(0.632), np.float64(0.384)]
+    max pure VarC2 5.5e-10, min mixed VarC2 47.4
+    E=0, L=0 degeneracy: 2
+    |<s^N|g0>| = 0.0189; <nd>/N of g0 = 0.632
+
+======== E. second-order critical point, N=10
+max Var C[O5] = 2.5e-11; SU3-pure count = 2
+
+======== F. SU(3)-exact-label counts, N=10
+SU(3) vertex    :  203   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.95)), (12, np.float64(9.82)), (8, np.float64(9.61)), (9, np.float64(9.69)), (13, np.float64(9.91))])
+U(5) vertex     :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+O(6) vertex     :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+stable PDS      :   58   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.68)), (17, np.float64(10.0)), (18, np.float64(9.68)), (13, np.float64(9.68)), (15, np.float64(9.73))])
+1st-order crit  :   58   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.68)), (17, np.float64(10.0)), (18, np.float64(9.68)), (13, np.float64(9.68)), (15, np.float64(9.73))])
+2nd-order crit  :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+12 random interior points: nontrivial exact-label = 0; smallest nontrivial Var = 213; trivial pure states at last point (L, nd) = [(20, np.float64(10.0)), (17, np.float64(10.0))]
+
+======== G. consistent-Q line H(xi) = (1-xi) nd - xi/(4N) Q.Q, chi=-sqrt7/2, N=10
+xi=0.1: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.000
+xi=0.2: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.002
+xi=0.3: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.008
+xi=0.4: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.026
+xi=0.5: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.107
+xi=0.6: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.320
+xi=0.7: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.456
+xi=0.8: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.537
+xi=0.9: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.592
+   xi=0.45: ground <nd>/N = 0.051
+   xi=0.47: ground <nd>/N = 0.068
+   xi=0.48: ground <nd>/N = 0.079
+   xi=0.49: ground <nd>/N = 0.092
+   xi=0.50: ground <nd>/N = 0.107
+   xi=0.51: ground <nd>/N = 0.124
+   xi=0.52: ground <nd>/N = 0.144
+   xi=0.55: ground <nd>/N = 0.211
+
+======== H. approximate PDS, N=10
+eps*nd: exponent (eps<=0.05) = 1.97; min mixed at eps=0: 24.3
+   eps=0.002 meanVar=1.16e-04 maxVar=4.13e-03 meanS=3.27e-07 mean(1-P)=3.73e-08
+   eps=0.005 meanVar=7.17e-04 maxVar=2.55e-02 meanS=1.82e-06 mean(1-P)=2.32e-07
+   eps=0.010 meanVar=2.83e-03 maxVar=1.00e-01 meanS=6.61e-06 mean(1-P)=9.23e-07
+   eps=0.020 meanVar=1.11e-02 maxVar=3.84e-01 meanS=2.36e-05 mean(1-P)=3.65e-06
+   eps=0.050 meanVar=6.46e-02 maxVar=2.15e+00 meanS=1.23e-04 mean(1-P)=2.21e-05
+   eps=0.100 meanVar=2.36e-01 maxVar=7.31e+00 meanS=4.15e-04 mean(1-P)=8.47e-05
+   eps=0.200 meanVar=8.24e-01 maxVar=2.29e+01 meanS=1.34e-03 mean(1-P)=3.17e-04
+eps*C[O5]: exponent (eps<=0.02) = 1.75; min mixed at eps=0: 24.3
+   eps=0.002 meanVar=4.20e-03 maxVar=1.00e-01 meanS=1.40e-05 mean(1-P)=1.94e-06
+   eps=0.005 meanVar=2.06e-02 maxVar=3.30e-01 meanS=7.18e-05 mean(1-P)=1.13e-05
+   eps=0.010 meanVar=6.86e-02 maxVar=9.52e-01 meanS=2.43e-04 mean(1-P)=4.30e-05
+   eps=0.020 meanVar=2.38e-01 maxVar=3.76e+00 meanS=8.20e-04 mean(1-P)=1.64e-04
+   eps=0.050 meanVar=1.32e+00 maxVar=2.25e+01 meanS=4.02e-03 mean(1-P)=9.84e-04
+
+======================================================================
+RUN  oddN_scan.py
+     Table I, odd N rows
+======================================================================
+N=5 dim=30 I=16 II=2 III=12 maxpure=1e-11 minmix=29.1 median=86.5
+N=7 dim=72 I=29 II=2 III=41 maxpure=4e-11 minmix=17.2 median=135.2
+N=9 dim=148 I=46 II=2 III=100 maxpure=2e-10 minmix=24.9 median=250.9
+N=11 dim=272 I=67 II=2 III=203 maxpure=1e-09 minmix=23.8 median=497.1
+N=13 dim=462 I=92 II=2 III=368 maxpure=2e-09 minmix=22.9 median=810.2
+N=15 dim=738 I=121 II=2 III=615 maxpure=3e-09 minmix=22.3 median=1241.9
+
+======================================================================
+RUN  energy_mixing.py
+     Mixing versus excitation energy at 168Er (Sec. V)
+======================================================================
+[1,2) MeV n=  9 medVar=   3247 med<C2>=    782 medS=0.54 medEffSectors=1.7
+[2,3) MeV n= 35 medVar=   3812 med<C2>=    659 medS=0.98 medEffSectors=2.7
+[3,4) MeV n= 97 medVar=   7896 med<C2>=    462 medS=1.77 medEffSectors=5.9
+[4,5) MeV n=198 medVar=   9716 med<C2>=    324 medS=2.25 medEffSectors=9.5
+[5,6) MeV n=222 medVar=   7634 med<C2>=    290 medS=2.21 medEffSectors=9.1
+[6,7) MeV n=123 medVar=   5022 med<C2>=    324 medS=2.01 medEffSectors=7.4
+[7,8) MeV n= 53 medVar=   3294 med<C2>=    429 medS=1.54 medEffSectors=4.7
+[8,9) MeV n= 26 medVar=   1880 med<C2>=    523 medS=1.06 medEffSectors=2.9
+[9,10) MeV n=  9 medVar=    695 med<C2>=    621 medS=0.74 medEffSectors=2.1
+[10,11) MeV n=  4 medVar=    156 med<C2>=    763 medS=0.66 medEffSectors=1.9
+
+======================================================================
+RUN  consistency_checks.py
+     B(E2) vs theta/alpha, O(5) breaking exponent, second-order labels
+======================================================================
+== (1) B(E2) ratio independence of theta/alpha, 168Er N=16
+  theta/alpha=0.0001: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=1.0: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=4.261: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+  theta/alpha=100.0: 64.27 : 100 : 6.26   <g0|Q|gamma2>=5.6e-17
+== (5) small-eps exponent for eps*C[O5], N=10
+  eps=1e-06 meanVar=1.445e-09
+  eps=1e-05 meanVar=1.424e-07
+  eps=1e-04 meanVar=1.398e-05
+  eps=1e-03 meanVar=1.196e-03
+  eps=2e-03 meanVar=4.197e-03
+  local exponents: [1.99 1.99 1.93 1.81]
+  max |eigenvalue| of C[O5] on the block: 130.00000000000014
+== (6) second-order point N=10: tau, n_d and sigma purity
+  tau-pure 203/203, nd-pure 41, sigma-pure 41
+  tau of nd-pure states: {9: 19, 10: 22}  states with tau >= N-1: 41
+== (7) L=3 multiplicity for N=3,4,5
+  N=3: number of L=3 states = 1
+  N=4: number of L=3 states = 1
+  N=5: number of L=3 states = 2
+
+======================================================================
+RUN  er168_anchor.py
+     168Er anchor: counts, energies, admixtures, B(E2) (Sec. VI)
+======================================================================
+Exact-label vs closed-form solvable counts (168Er parameters):
+  N=12: exact-label(VarC2=0) = 81, closed-form solvable = 79, multiplicity partners = 2
+  N=14: exact-label(VarC2=0) = 108, closed-form solvable = 106, multiplicity partners = 2
+  N=16: exact-label(VarC2=0) = 139, closed-form solvable = 137, multiplicity partners = 2
+
+Ground-band rigid-rotor energies (N=16):
+  E(0+_g) = -0.000 MeV   (lambda*L(L+1) = 0.000)
+  E(2+_g) = 0.078 MeV   (lambda*L(L+1) = 0.078)
+  E(4+_g) = 0.260 MeV   (lambda*L(L+1) = 0.260)
+  E(6+_g) = 0.546 MeV   (lambda*L(L+1) = 0.546)
+  E(2+_gamma) = 0.822 MeV   (6 h2 (2N-1) + 6 lambda = 0.822)
+
+Beta-band head (0+, E=1.22 MeV) SU(3) admixtures:
+  P_lambda = {(26, 0): 0.0957, (24, 4): 0.0294, (28, 2): 0.8749}
+  (Leviatan: dominant (28,2) with ~10% (26,0) and ~3% (24,4))
+
+gamma->g B(E2) ratios (theta/alpha = 4.261):
+  2+_gamma -> (0+_g : 2+_g : 4+_g) = 64.3 : 100.0 : 6.3
+  (Leviatan PRL 77 Table I, PDS column: 64.3 : 100 : 6.3)
+
+======================================================================
+RUN  qsim_demo.py
+     Sec. VII B: VQE/VQD state preparation, max|dE| vs exact
+======================================================================
+N=3 first-order critical, M=0 block dim=10, qubits=4
+ k |  E_VQD    E_exact   |dE|     VarC2      Varnd    class
+  0|   0.0000   0.0000 3.9e-16  1.17e+02  3.06e-01  MIX
+  1|   0.0000   0.0000 5.2e-16  2.78e+01  7.73e-01  MIX
+  2|   0.0000   0.0000 8.5e-16  2.88e+02  1.60e+00  MIX
+  3|   0.0000   0.0000 3.5e-15  3.40e+01  7.01e-01  MIX
+  4|   0.0000   0.0000 4.7e-15  2.20e+02  1.98e+00  MIX
+  5|   4.0000   4.0000 5.7e-14  2.05e-12  9.26e-01  solv
+  6|  15.0000  15.0000 0.0e+00  6.82e-13  2.87e-01  solv
+  7|  15.0000  15.0000 5.2e-14  2.05e-12  3.92e-01  solv
+  8|  15.0000  15.0000 2.2e-13  6.82e-12  3.66e-01  solv
+  9|  25.0000  25.0000 1.2e-13  5.18e+01  1.34e-01  MIX
+
+ max |dE| over all prepared states = 2.17e-13  (target < 1e-4: PASS)
+ SU(3)-pure as prepared (before degeneracy resolution) = 4, SU(3)-mixed = 6
+  exact SU(3)-pure count: 8 if degenerate levels are resolved with C2 before n_d, 7 in the
+  U(5) reading used for Fig. 4(a); see Secs. IV B and VII B of the manuscript
+
+======================================================================
+RUN  qsim_echo.py
+     Sec. VII D: Casimir echo and short-time identity
+======================================================================
+N=3: block dim 10, 7 SU(3)-pure, 3 SU(3)-mixed; C2 span 54.0
+     t  min echo(pure)  max echo(mix)      gap
+  0.00         1.00000        1.00000  -0.0000
+  1.00         1.00000        0.98251   0.0175
+  2.00         1.00000        0.93345   0.0666
+  3.00         1.00000        0.86234   0.1377
+  4.00         1.00000        0.78301   0.2170
+  5.00         1.00000        0.71086   0.2891
+  6.00         1.00000        0.65992   0.3401
+  7.00         1.00000        0.64008   0.3599
+  8.00         1.00000        0.65520   0.3448
+
+Short-time identity  E(t) = 1 - t^2 Var C2  (normalized), t=0.1:
+  mixed state 0: echo=0.999177  1 - t^2 Var=0.999177
+  mixed state 2: echo=0.999263  1 - t^2 Var=0.999263
+  mixed state 9: echo=0.999822  1 - t^2 Var=0.999822
+
+Solvable states are exact C2-eigenstates -> echo == 1 for all t:
+  state 1: echo(t=0.5)=1.00000000, echo(t=8)=1.00000000, Var C2=4.1e-12
+  state 3: echo(t=0.5)=1.00000000, echo(t=8)=1.00000000, Var C2=9.1e-13
+  state 4: echo(t=0.5)=1.00000000, echo(t=8)=1.00000000, Var C2=-2.7e-12
+
+======================================================================
+RUN  label_locality.py
+     Sec. VII D/F: low-weight Pauli scan and encoding cost
+======================================================================
+(B) No cheap label  (N=3, 7 SU(3)-pure / 3 SU(3)-mixed), scanned 66 weight<=2 Paulis.
+    Paulis with the highest |<P>| on the SU(3)-pure set:
+      ZZII: min|<P>|solv=0.273  max|<P>|mix=1.000  margin=-0.727
+      IZIX: min|<P>|solv=0.187  max|<P>|mix=0.870  margin=-0.683
+      IZII: min|<P>|solv=0.135  max|<P>|mix=1.000  margin=-0.865
+      ZIIX: min|<P>|solv=0.117  max|<P>|mix=0.759  margin=-0.643
+      ZIII: min|<P>|solv=0.091  max|<P>|mix=1.000  margin=-0.909
+    Best value on the SU(3)-pure set over all weight<=2 Paulis: max min|<P>| = 0.273 (<< 1).
+    => no low-weight Pauli is even approximately constant on the SU(3)-pure subspace
+       (not one weight<=2 Pauli is even half-rigid on the SU(3)-pure set).
+
+(D) Encoding resource cost of H  (N=2):
+    encoding qubits   #Pauli maxWeight meanWeight
+    dense         5      232         5        3.7
+    binary       12    15936         8        6.8
+    unary        18    16464         8        7.6
+    unary = structured one-hot mapping (weight-2 ladder terms). The dense register has
+    the fewest terms but every term can act on the whole register; the per-mode
+    encodings keep weight <= 8 (four ladder operators) at the price of many more terms.
+
+(D) Encoding resource cost of H  (N=3):
+    encoding qubits   #Pauli maxWeight meanWeight
+    dense         6     1568         6        4.5
+    binary       12    15749         8        6.8
+    unary        24    94684         8        7.7
+    unary = structured one-hot mapping (weight-2 ladder terms). The dense register has
+    the fewest terms but every term can act on the whole register; the per-mode
+    encodings keep weight <= 8 (four ladder operators) at the price of many more terms.
+
+======================================================================
+RUN  check_encodings.py
+     Sec. VII F: encodings reproduce the spectrum, no leakage, Pauli counts
+======================================================================
+ N encoding qubits   terms maxW meanW spectrum err     leak
+ 2 dense         5     232    5   3.7      1.1e-14  3.3e-16
+ 2 binary       12   15936    8   6.8      2.0e-14  1.1e-15
+ 2 unary        18   16464    8   7.6      3.7e-14  1.6e-15
+ 3 dense         6    1568    6   4.5      4.3e-14  2.5e-15
+ 3 binary       12   15749    8   6.8      3.4e-13  1.6e-14
+ 3 unary        24   94684    8   7.7      1.1e-13  1.3e-14
+all encodings reproduce the exact spectrum without leakage
+
+======================================================================
+RUN  qsim_hardware_noise.py
+     Sec. VII E: density-matrix noise model
+======================================================================
+N=3: 7 SU(3)-pure, 3 SU(3)-mixed; prep 2q-gates (median) = 11
+  2q err  project  maxVar pure  minVar mix  contrast
+ 0.0e+00    False        13.90       63.96      4.6x
+ 0.0e+00     True        10.45       64.01      6.1x
+ 1.0e-03    False        30.06       72.71      2.4x
+ 1.0e-03     True        17.50       72.86      4.2x
+ 2.5e-03    False        53.61       85.47      1.6x
+ 2.5e-03     True        27.84       85.84      3.1x
+ 5.0e-03    False        91.07      105.84      1.2x
+ 5.0e-03     True        44.45      106.67      2.4x
+ 1.0e-02    False       159.66      143.36      0.9x
+ 1.0e-02     True        75.47      145.42      1.9x
+
+======================================================================
+SUMMARY
+  [PASS]  test_conventions.py
+  [PASS]  casimir3.py
+  [PASS]  verify_revision.py
+  [PASS]  oddN_scan.py
+  [PASS]  energy_mixing.py
+  [PASS]  consistency_checks.py
+  [PASS]  er168_anchor.py
+  [PASS]  qsim_demo.py
+  [PASS]  qsim_echo.py
+  [PASS]  label_locality.py
+  [PASS]  check_encodings.py
+  [PASS]  qsim_hardware_noise.py
+======================================================================
+All reproduction scripts completed.
+exit 0

@@ -1,0 +1,86 @@
+======== A. arbiter identity and H(sqrt2) relation
+N=3: max|arbiter| = 1.1e-14   max|H(sqrt2) - h2term/2| = 3.6e-15
+N=4: max|arbiter| = 2.8e-14   max|H(sqrt2) - h2term/2| = 7.1e-15
+N=5: max|arbiter| = 2.8e-14   max|H(sqrt2) - h2term/2| = 1.4e-14
+N=8: max|arbiter| = 8.5e-14   max|H(sqrt2) - h2term/2| = 4.3e-14
+N=10: max|arbiter| = 1.7e-13   max|H(sqrt2) - h2term/2| = 5.7e-14
+
+======== B. second-order Hamiltonian commutes with C[O(5)]
+N=10 ||[H, C_O5]||_F = 4.4e-11
+
+======== C. stable SU(3)-PDS point (h0/h2=0.35, C/h2=0.0523)
+  N   dim    I  II  III  frac  maxpure  minmix   medmix
+  4    18   11   1    6  0.67    2e-12    18.1     61.6
+  6    48   22   2   24  0.50    6e-11    28.0    125.3
+  8   105   37   2   66  0.37    4e-11    25.7    242.3
+ 10   203   56   2  145  0.29    6e-10    24.3    369.0
+     thresholds N=10: {1e-10: 52, 1e-08: 58, 1e-06: 58, 0.0001: 58, 0.01: 58, 1.0: 58}
+     Class II: L=16 <C2>=346.0 E=95.7256
+     Class II: L=13 <C2>=256.0 E=181.0186
+ 12   358   79   2  277  0.23    2e-09    23.3    601.7
+ 14   588  106   2  480  0.18    2e-09    22.6   1035.0
+ 16   915  137   2  776  0.15    7e-09    22.1   1577.1
+median mixed variance exponent ~ N^2.32
+
+======== D. first-order critical H(beta0=sqrt2), N=10 (h2=1 on P2(beta0))
+order L2>C2>nd: SU3-pure 58 (tower 56, other 2), nd-pure 2, nd-pure&not SU3 0, mixed in both 145
+    SU3-pure non-tower: E=32.0000 L=16 <C2>=346.0
+    SU3-pure non-tower: E=77.0000 L=13 <C2>=256.0
+    lowest L=0 states: E=[np.float64(-0.0), np.float64(-0.0), np.float64(13.030409)], <nd>/N=[np.float64(0.0), np.float64(0.632), np.float64(0.384)]
+    max pure VarC2 5.5e-10, min mixed VarC2 51.0
+order L2>nd>C2: SU3-pure 56 (tower 54, other 2), nd-pure 4, nd-pure&not SU3 2, mixed in both 145
+    U(5)-pure: E=-0.0000 L=0 nd=0.00
+    U(5)-pure: E=57.0000 L=3 nd=3.00
+    SU3-pure non-tower: E=32.0000 L=16 <C2>=346.0
+    SU3-pure non-tower: E=77.0000 L=13 <C2>=256.0
+    lowest L=0 states: E=[np.float64(-0.0), np.float64(-0.0), np.float64(13.030409)], <nd>/N=[np.float64(0.0), np.float64(0.632), np.float64(0.384)]
+    max pure VarC2 5.5e-10, min mixed VarC2 47.4
+    E=0, L=0 degeneracy: 2
+    |<s^N|g0>| = 0.0189; <nd>/N of g0 = 0.632
+
+======== E. second-order critical point, N=10
+max Var C[O5] = 2.5e-11; SU3-pure count = 2
+
+======== F. SU(3)-exact-label counts, N=10
+SU(3) vertex    :  203   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.95)), (12, np.float64(9.82)), (8, np.float64(9.61)), (9, np.float64(9.69)), (13, np.float64(9.91))])
+U(5) vertex     :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+O(6) vertex     :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+stable PDS      :   58   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.68)), (17, np.float64(10.0)), (18, np.float64(9.68)), (13, np.float64(9.68)), (15, np.float64(9.73))])
+1st-order crit  :   58   (L of pure states with nd~0 or N: [(20, np.float64(10.0)), (16, np.float64(9.68)), (17, np.float64(10.0)), (18, np.float64(9.68)), (13, np.float64(9.68)), (15, np.float64(9.73))])
+2nd-order crit  :    2   (L of pure states with nd~0 or N: [(17, np.float64(10.0)), (20, np.float64(10.0))])
+12 random interior points: nontrivial exact-label = 0; smallest nontrivial Var = 213; trivial pure states at last point (L, nd) = [(20, np.float64(10.0)), (17, np.float64(10.0))]
+
+======== G. consistent-Q line H(xi) = (1-xi) nd - xi/(4N) Q.Q, chi=-sqrt7/2, N=10
+xi=0.1: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.000
+xi=0.2: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.002
+xi=0.3: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.008
+xi=0.4: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.026
+xi=0.5: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.107
+xi=0.6: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.320
+xi=0.7: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.456
+xi=0.8: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.537
+xi=0.9: nontrivial exact-label (SU3 or U5) = 0; ground <nd>/N = 0.592
+   xi=0.45: ground <nd>/N = 0.051
+   xi=0.47: ground <nd>/N = 0.068
+   xi=0.48: ground <nd>/N = 0.079
+   xi=0.49: ground <nd>/N = 0.092
+   xi=0.50: ground <nd>/N = 0.107
+   xi=0.51: ground <nd>/N = 0.124
+   xi=0.52: ground <nd>/N = 0.144
+   xi=0.55: ground <nd>/N = 0.211
+
+======== H. approximate PDS, N=10
+eps*nd: exponent (eps<=0.05) = 1.97; min mixed at eps=0: 24.3
+   eps=0.002 meanVar=1.16e-04 maxVar=4.13e-03 meanS=3.27e-07 mean(1-P)=3.73e-08
+   eps=0.005 meanVar=7.17e-04 maxVar=2.55e-02 meanS=1.82e-06 mean(1-P)=2.32e-07
+   eps=0.010 meanVar=2.83e-03 maxVar=1.00e-01 meanS=6.61e-06 mean(1-P)=9.23e-07
+   eps=0.020 meanVar=1.11e-02 maxVar=3.84e-01 meanS=2.36e-05 mean(1-P)=3.65e-06
+   eps=0.050 meanVar=6.46e-02 maxVar=2.15e+00 meanS=1.23e-04 mean(1-P)=2.21e-05
+   eps=0.100 meanVar=2.36e-01 maxVar=7.31e+00 meanS=4.15e-04 mean(1-P)=8.47e-05
+   eps=0.200 meanVar=8.24e-01 maxVar=2.29e+01 meanS=1.34e-03 mean(1-P)=3.17e-04
+eps*C[O5]: exponent (eps<=0.02) = 1.75; min mixed at eps=0: 24.3
+   eps=0.002 meanVar=4.20e-03 maxVar=1.00e-01 meanS=1.40e-05 mean(1-P)=1.94e-06
+   eps=0.005 meanVar=2.06e-02 maxVar=3.30e-01 meanS=7.18e-05 mean(1-P)=1.13e-05
+   eps=0.010 meanVar=6.86e-02 maxVar=9.52e-01 meanS=2.43e-04 mean(1-P)=4.30e-05
+   eps=0.020 meanVar=2.38e-01 maxVar=3.76e+00 meanS=8.20e-04 mean(1-P)=1.64e-04
+   eps=0.050 meanVar=1.32e+00 maxVar=2.25e+01 meanS=4.02e-03 mean(1-P)=9.84e-04

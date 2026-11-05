@@ -1,0 +1,10 @@
+[1,2) MeV n=  9 medVar=   3247 med<C2>=    782 medS=0.54 medEffSectors=1.7
+[2,3) MeV n= 35 medVar=   3812 med<C2>=    659 medS=0.98 medEffSectors=2.7
+[3,4) MeV n= 97 medVar=   7896 med<C2>=    462 medS=1.77 medEffSectors=5.9
+[4,5) MeV n=198 medVar=   9716 med<C2>=    324 medS=2.25 medEffSectors=9.5
+[5,6) MeV n=222 medVar=   7634 med<C2>=    290 medS=2.21 medEffSectors=9.1
+[6,7) MeV n=123 medVar=   5022 med<C2>=    324 medS=2.01 medEffSectors=7.4
+[7,8) MeV n= 53 medVar=   3294 med<C2>=    429 medS=1.54 medEffSectors=4.7
+[8,9) MeV n= 26 medVar=   1880 med<C2>=    523 medS=1.06 medEffSectors=2.9
+[9,10) MeV n=  9 medVar=    695 med<C2>=    621 medS=0.74 medEffSectors=2.1
+[10,11) MeV n=  4 medVar=    156 med<C2>=    763 medS=0.66 medEffSectors=1.9

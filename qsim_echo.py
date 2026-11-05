@@ -84,8 +84,8 @@ def run(N=3, tgrid=None, thr=1e-6, verbose=True):
     out = {"N": N, "d": d, "solv": solv, "mixed": mixed, "labvar": lv,
            "tgrid": tgrid, "echo": Es, "C2span": span, "V": V, "C2": C2}
     if verbose:
-        print(f"N={N}: block dim {d}, {len(solv)} solvable, {len(mixed)} mixed; C2 span {span:.1f}")
-        print(f"{'t':>6} {'min echo(solv)':>15} {'max echo(mix)':>14} {'gap':>8}")
+        print(f"N={N}: block dim {d}, {len(solv)} SU(3)-pure, {len(mixed)} SU(3)-mixed; C2 span {span:.1f}")
+        print(f"{'t':>6} {'min echo(pure)':>15} {'max echo(mix)':>14} {'gap':>8}")
         for ti, t in enumerate(tgrid):
             if ti % 4 != 0:
                 continue

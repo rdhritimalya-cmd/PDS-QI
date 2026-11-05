@@ -1,0 +1,8 @@
+ N encoding qubits   terms maxW meanW spectrum err     leak
+ 2 dense         5     232    5   3.7      1.1e-14  3.3e-16
+ 2 binary       12   15936    8   6.8      2.0e-14  1.1e-15
+ 2 unary        18   16464    8   7.6      3.7e-14  1.6e-15
+ 3 dense         6    1568    6   4.5      4.3e-14  2.5e-15
+ 3 binary       12   15749    8   6.8      3.4e-13  1.6e-14
+ 3 unary        24   94684    8   7.7      1.1e-13  1.3e-14
+all encodings reproduce the exact spectrum without leakage

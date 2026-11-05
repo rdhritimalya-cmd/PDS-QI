@@ -2,9 +2,12 @@
 Boson-to-qubit encodings of the sd-IBM, built as SparsePauliOps so we never
 materialize a 2^(6q) matrix. Three encodings:
   - 'binary' : each of 6 modes stored in q=ceil(log2(N+1)) qubits (binary occupation)
-  - 'unary'  : each of 6 modes stored in q=(N+1) qubits (one-hot occupation)
-Per-mode a, adag, n are built as small (2^q x 2^q) matrices and decomposed to
-Pauli strings; full-register operators are tensor products / sums / products of these.
+  - 'unary'  : each of 6 modes stored in q=(N+1) qubits (one-hot occupation), with the
+               structured ladder operators of local_ops_unary_structured (weight-2 terms)
+  - 'unary_dense' : one-hot, but the local matrix is extended by zero to all 2^q states and
+               Pauli-decomposed (kept for comparison)
+For 'binary' the per-mode a, adag, n are small (2^q x 2^q) matrices decomposed to Pauli
+strings; full-register operators are tensor products / sums / products of these.
 Physics check: project H onto the physical Fock subspace and compare eigenvalues
 to the exact Fock-space spectrum.
 (The 'dense' symmetry-reduced encoding is handled separately via the existing code.)
@@ -21,13 +24,13 @@ def mode_m(name):  # magnetic quantum number for d modes, None for s
 
 def qubits_per_mode(N, enc):
     if enc=='binary': return max(1, math.ceil(math.log2(N+1)))
-    if enc=='unary':  return N+1
+    if enc in ('unary', 'unary_dense'):  return N+1
     raise ValueError
 
 def enc_index(k, q, enc):
     """computational-basis integer for occupation k."""
     if enc=='binary': return k                     # binary number
-    if enc=='unary':  return (1<<k)                # one-hot: bit k set
+    if enc in ('unary', 'unary_dense'):  return (1<<k)   # one-hot: bit k set
     raise ValueError
 
 def local_ops(N, q, enc):
@@ -41,6 +44,23 @@ def local_ops(N, q, enc):
             a[ikm,ik]=math.sqrt(k)                 # a|k> = sqrt(k)|k-1>
     adag=a.T.copy()
     return a,adag,n
+
+def local_ops_unary_structured(N):
+    """Structured one-hot (unary) ladder operators on q=N+1 qubits, built directly as Pauli sums:
+    a = sum_{k=1..N} sqrt(k) sigma^-_k sigma^+_{k-1},  n = sum_k k (I - Z_k)/2,
+    with sigma^- = |0><1| = (X+iY)/2 and sigma^+ = |1><0| = (X-iY)/2 (qubit k <-> occupation k).
+    Every term has Pauli weight <= 2. This is the standard unary mapping; it agrees with
+    local_ops(N, q, 'unary') on the one-hot states and maps one-hot states to one-hot states."""
+    terms = []
+    for k in range(1, N + 1):
+        c = math.sqrt(k) / 4
+        terms += [("XX", [k, k - 1], c), ("XY", [k, k - 1], -1j * c),
+                  ("YX", [k, k - 1], 1j * c), ("YY", [k, k - 1], c)]
+    q = N + 1
+    a = SparsePauliOp.from_sparse_list(terms, num_qubits=q).simplify()
+    n = SparsePauliOp.from_sparse_list([("I", [0], sum(k / 2 for k in range(N + 1)))] +
+                                       [("Z", [k], -k / 2) for k in range(1, N + 1)], num_qubits=q).simplify()
+    return a, a.adjoint().simplify(), n
 
 def to_spo(mat):
     return SparsePauliOp.from_operator(Operator(mat)).simplify()
@@ -59,8 +79,15 @@ def pad(op_spo, pos, q, nmodes=6):
 class Encoded:
     def __init__(self, N, enc):
         self.N=N; self.enc=enc; self.q=qubits_per_mode(N,enc); self.nq=6*self.q
-        a,adag,n=local_ops(N,self.q,enc)
-        self.a_spo=to_spo(a); self.adag_spo=to_spo(adag); self.n_spo=to_spo(n)
+        if enc=='unary':
+            # structured one-hot mapping (weight-2 ladder terms)
+            self.a_spo, self.adag_spo, self.n_spo = local_ops_unary_structured(N)
+        else:
+            # 'binary': exact local matrices (zero on unused codewords when N+1 is not a power of 2)
+            # 'unary_dense': the one-hot matrix extended by zero to all 2^(N+1) states and
+            #   Pauli-decomposed; kept for comparison (242,074 terms of weight 12 at N=2)
+            a,adag,n=local_ops(N,self.q,'unary' if enc=='unary_dense' else enc)
+            self.a_spo=to_spo(a); self.adag_spo=to_spo(adag); self.n_spo=to_spo(n)
         self.A   =[pad(self.a_spo,p,self.q) for p in range(6)]     # a_mode
         self.Ad  =[pad(self.adag_spo,p,self.q) for p in range(6)]  # adag_mode
         self.Nm  =[pad(self.n_spo,p,self.q) for p in range(6)]     # n_mode

@@ -107,7 +107,9 @@ if __name__=="__main__":
         print(f" {i:2d}| {E:8.4f} {Ee:8.4f} {dE:.1e} {vc:9.2e} {vn:9.2e}  {cls}")
     print(f"\n max |dE| over all prepared states = {max(dEs):.2e}  (target < 1e-4: {'PASS' if max(dEs)<1e-4 else 'FAIL'})")
     nsolv=sum(1 for r in rows if r[6]=='solv')
-    print(f" solvable(prepared)={nsolv}, mixed(prepared)={d-nsolv}  (exact: 8 solvable, 2 mixed)")
+    print(f" SU(3)-pure as prepared (before degeneracy resolution) = {nsolv}, SU(3)-mixed = {d-nsolv}")
+    print("  exact SU(3)-pure count: 8 if degenerate levels are resolved with C2 before n_d, 7 in the")
+    print("  U(5) reading used for Fig. 4(a); see Secs. IV B and VII B of the manuscript")
 
 
 def degeneracy_resolve_prepared(found, d, C2b, L2b, ndb):

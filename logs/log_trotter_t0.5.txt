@@ -1,0 +1,9 @@
+N=2, qubits=5, Pauli terms=216, t=0.5, initial state (|E_0>+|E_mid>)/sqrt2
+ steps | 1st-order infidelity | 2nd-order infidelity
+     1 | 8.958e-01 | 7.748e-01
+     2 | 6.737e-01 | 5.694e-01
+     4 | 5.467e-01 | 2.110e-01
+     8 | 1.879e-01 | 1.802e-02
+    16 | 4.997e-02 | 1.164e-03
+    32 | 1.267e-02 | 7.312e-05
+    64 | 3.179e-03 | 4.575e-06

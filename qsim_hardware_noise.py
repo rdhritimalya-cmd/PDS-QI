@@ -12,8 +12,8 @@ and the projection M exactly, so any shot landing outside the physical sector is
 a detected error and is discarded (symmetry post-selection), at zero circuit cost.
 
 This module runs a Qiskit Aer density-matrix simulation (noise exact, shot-free)
-of the N=3 first-order critical block with a Heron-like depolarizing+readout
-model, and reports the solvable-vs-mixed Var contrast with and without symmetry
+of the N=3 first-order critical block with a Heron-like depolarizing gate-error
+model (moments are taken from the final density matrix, so no readout error enters), and reports the solvable-vs-mixed Var contrast with and without symmetry
 post-selection, swept over the two-qubit error rate.  State preparation uses
 exact (StatePreparation) circuits to isolate the readout's noise behaviour; VQD
 prepares the same states at comparable depth (see qsim_demo.py).
@@ -25,7 +25,7 @@ from qiskit import QuantumCircuit, transpile
 from qiskit.circuit.library import StatePreparation
 from qiskit.quantum_info import Operator
 from qiskit_aer import AerSimulator
-from qiskit_aer.noise import NoiseModel, depolarizing_error, ReadoutError
+from qiskit_aer.noise import NoiseModel, depolarizing_error
 from ibm_pds import IBMSpace
 from critical import H_first_order
 
@@ -53,11 +53,10 @@ def _block(N):
     return V, C2, np.where(lv < 1e-6)[0], np.where(lv >= 1e-6)[0]
 
 
-def _noise_model(p2, p1=3e-4, pro=1e-2):
+def _noise_model(p2, p1=3e-4):
     nm = NoiseModel()
     nm.add_all_qubit_quantum_error(depolarizing_error(p1, 1), ["sx", "x", "rz"])
     nm.add_all_qubit_quantum_error(depolarizing_error(p2, 2), ["cz"])
-    nm.add_all_qubit_readout_error(ReadoutError([[1 - pro, pro], [pro, 1 - pro]]))
     return nm
 
 
@@ -90,8 +89,8 @@ def run(N=3, p2_grid=(0.0, 1e-3, 2.5e-3, 5e-3, 1e-2), verbose=True):
     twoq = int(np.median([circs[k].count_ops().get("cz", 0) for k in range(d)]))
     results = []
     if verbose:
-        print(f"N={N}: {len(solv)} solvable, {len(mixed)} mixed; prep 2q-gates (median) = {twoq}")
-        print(f"{'2q err':>8} {'post-sel':>8} {'maxVar solv':>12} {'minVar mix':>11} {'contrast':>9}")
+        print(f"N={N}: {len(solv)} SU(3)-pure, {len(mixed)} SU(3)-mixed; prep 2q-gates (median) = {twoq}")
+        print(f"{'2q err':>8} {'project':>8} {'maxVar pure':>12} {'minVar mix':>11} {'contrast':>9}")
     for p2 in p2_grid:
         rhos = {k: rho(circs[k], p2) for k in range(d)}
         for ps in (False, True):

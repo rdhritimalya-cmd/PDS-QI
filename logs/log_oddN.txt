@@ -1,0 +1,6 @@
+N=5 dim=30 I=16 II=2 III=12 maxpure=1e-11 minmix=29.1 median=86.5
+N=7 dim=72 I=29 II=2 III=41 maxpure=4e-11 minmix=17.2 median=135.2
+N=9 dim=148 I=46 II=2 III=100 maxpure=2e-10 minmix=24.9 median=250.9
+N=11 dim=272 I=67 II=2 III=203 maxpure=1e-09 minmix=23.8 median=497.1
+N=13 dim=462 I=92 II=2 III=368 maxpure=2e-09 minmix=22.9 median=810.2
+N=15 dim=738 I=121 II=2 III=615 maxpure=3e-09 minmix=22.3 median=1241.9

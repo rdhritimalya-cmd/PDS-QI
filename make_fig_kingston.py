@@ -25,11 +25,11 @@ def make(src="kingston_device_N3.json", fname="fig_kingston.png"):
     # value +/- labels
     ax.text(x[0], meas[0]+err[0]+8, f"{meas[0]:.0f}$\\pm${err[0]:.0f}", ha="center", fontsize=9, fontweight="bold")
     ax.text(x[1], meas[1]+err[1]+8, f"{meas[1]:.0f}$\\pm${err[1]:.0f}", ha="center", fontsize=9, fontweight="bold")
-    ax.set_xticks(x); ax.set_xticklabels(["solvable\n(consistent with 0)","mixed\n($\\sim$3$\\sigma$ nonzero)"])
+    ax.set_xticks(x); ax.set_xticklabels(["SU(3)-pure\n(deformed $2^+$)","SU(3)-mixed\n($|s^3\\rangle$)"])
     ax.set_ylabel(r"$\mathrm{Var}\,\hat C_2[\mathrm{SU(3)}]$  (measured)")
     ax.set_ylim(-120, 345)
     ax.axhline(0, color="k", lw=0.6)
-    ax.set_title("ibm\\_kingston, 4000 shots: point estimates match exact values",
+    ax.set_title("ibm_kingston, $N=3$, 4000 shots",
                  fontsize=9.5)
     plt.tight_layout(); plt.savefig(fname, dpi=160); plt.close(); print("saved",fname)
 

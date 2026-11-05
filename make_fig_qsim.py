@@ -50,7 +50,7 @@ def make_qsim_figure():
     ax1.semilogy(idx, np.sort(res)[::-1], "o", color="#c0392b", ms=7,
                  label="prepared + label-resolved")
     ax1.axhline(1e-6, color="k", ls=":", lw=1)
-    ax1.text(0.3, 3e-6, "solvable threshold", fontsize=8)
+    ax1.text(0.3, 3e-6, "purity threshold", fontsize=8)
     ax1.set_xlabel("eigenstate index (sorted)")
     ax1.set_ylabel(r"$\mathrm{Var}\,\hat C_2[\mathrm{SU(3)}]$ on VQD state")
     ax1.set_title(r"(a) VQD-prepared states, $N=3$ first-order critical", fontsize=9.5)

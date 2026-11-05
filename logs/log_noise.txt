@@ -1,0 +1,14 @@
+N=3: 7 SU(3)-pure, 3 SU(3)-mixed; prep 2q-gates (median) = 11
+  2q err  project  maxVar pure  minVar mix  contrast
+ 1.0e-04    False        15.53       64.84      4.2x
+ 1.0e-04     True        11.16       64.90      5.8x
+ 1.0e-03    False        30.06       72.71      2.4x
+ 1.0e-03     True        17.50       72.86      4.2x
+ 2.5e-03    False        53.61       85.47      1.6x
+ 2.5e-03     True        27.84       85.84      3.1x
+ 5.0e-03    False        91.07      105.84      1.2x
+ 5.0e-03     True        44.45      106.67      2.4x
+ 7.5e-03    False       126.39      125.12      1.0x
+ 7.5e-03     True        60.31      126.51      2.1x
+ 1.0e-02    False       159.66      143.36      0.9x
+ 1.0e-02     True        75.47      145.42      1.9x
