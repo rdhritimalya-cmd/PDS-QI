@@ -162,6 +162,6 @@ if __name__ == "__main__":
     print("A false positive is a state with VarC2=0 but VarC3!=0 (a conjugate-irrep")
     print("mixture masquerading as exact-label). The manuscript claim is zero of these.\n")
     for kind in ('stable', 'first'):
-        for N in (6, 8, 9, 10, 12):
+        for N in (6, 8, 9, 10, 12, 15):
             check(N, kind)
         print()

@@ -1,0 +1,44 @@
+Conjugate-irrep injectivity check via the cubic Casimir C3[SU(3)].
+A false positive is a state with VarC2=0 but VarC3!=0 (a conjugate-irrep
+mixture masquerading as exact-label). The manuscript claim is zero of these.
+
+stable N= 6: b=0.736485  max|[C3,Q]|=2.3e-13  VarC2=0 -> 24 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+stable N= 8: b=0.736485  max|[C3,Q]|=5.7e-13  VarC2=0 -> 39 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+stable N= 9: b=0.736485  max|[C3,Q]|=9.1e-13  VarC2=0 -> 48 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+stable N=10: b=0.736485  max|[C3,Q]|=1.8e-12  VarC2=0 -> 58 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+stable N=12: b=0.736485  max|[C3,Q]|=4.5e-12  VarC2=0 -> 81 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+stable N=15: b=0.736485  max|[C3,Q]|=7.3e-12  VarC2=0 -> 123 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+          C2=276 (dim 46): C3 eigenvalues [np.float64(-351.415), np.float64(351.415)]  <- conjugate pair split
+          C2=306 (dim 92): C3 eigenvalues [np.float64(-225.91), np.float64(225.91)]  <- conjugate pair split
+
+first  N= 6: b=0.736485  max|[C3,Q]|=2.3e-13  VarC2=0 -> 24 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+first  N= 8: b=0.736485  max|[C3,Q]|=5.7e-13  VarC2=0 -> 39 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+first  N= 9: b=0.736485  max|[C3,Q]|=9.1e-13  VarC2=0 -> 48 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+first  N=10: b=0.736485  max|[C3,Q]|=1.8e-12  VarC2=0 -> 58 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+first  N=12: b=0.736485  max|[C3,Q]|=4.5e-12  VarC2=0 -> 81 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+first  N=15: b=0.736485  max|[C3,Q]|=7.3e-12  VarC2=0 -> 123 states, of which VarC3!=0 (conjugate-mix false positives) = 0
+          C2=54 (dim 8): C3 eigenvalues [np.float64(-34.229), np.float64(34.229)]  <- conjugate pair split
+          C2=114 (dim 28): C3 eigenvalues [np.float64(-79.867), np.float64(79.867)]  <- conjugate pair split
+          C2=180 (dim 14): C3 eigenvalues [np.float64(-205.372), np.float64(205.372)]  <- conjugate pair split
+          C2=198 (dim 56): C3 eigenvalues [np.float64(-143.761), np.float64(143.761)]  <- conjugate pair split
+          C2=276 (dim 46): C3 eigenvalues [np.float64(-351.415), np.float64(351.415)]  <- conjugate pair split
+          C2=306 (dim 92): C3 eigenvalues [np.float64(-225.91), np.float64(225.91)]  <- conjugate pair split
+

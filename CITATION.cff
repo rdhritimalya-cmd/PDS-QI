@@ -11,11 +11,9 @@ authors:
     given-names: Dhritimalya
     affiliation: "Department of Physics, Presidency University, Kolkata 700073, India; Department of Mathematics, Jadavpur University, Kolkata 700032, India"
 
-version: 2.0.0
+version: 2.1.0
 
-doi: "10.5281/zenodo.23984936"
 
-date-released: "2026-11-05"
 
 repository-code: "https://github.com/rdhritimalya-cmd/PDS-QI"
 

@@ -17,19 +17,22 @@ import sys
 
 CLASSICAL = [
     ("test_conventions.py", "Clebsch-Gordan / Casimir convention self-tests (Sec. II)"),
-    ("casimir3.py", "Cubic Casimir conjugate-irrep check (Sec. III)"),
+    ("casimir3.py", "Cubic Casimir conjugate-irrep check, N = 6, 9, 12, 15 (Sec. III)"),
     ("verify_revision.py", "All exact-diagonalization numbers of Secs. II-V, Tables I, II, IV"),
     ("oddN_scan.py", "Table I, odd N rows"),
     ("energy_mixing.py", "Mixing versus excitation energy at 168Er (Sec. V)"),
     ("consistency_checks.py", "B(E2) vs theta/alpha, O(5) breaking exponent, second-order labels"),
     ("er168_anchor.py", "168Er anchor: counts, energies, admixtures, B(E2) (Sec. VI)"),
+    ("classII_analytic.py", "Class II states: counting, P0dag chi construction, closed-form energies (Sec. IV B)"),
+    ("degeneracy_check.py", "Whole-window vs nested refinement at N=3 (Sec. VII B, App. A)"),
 ]
 QUANTUM = [
     ("qsim_demo.py", "Sec. VII B: VQE/VQD state preparation, max|dE| vs exact"),
-    ("qsim_echo.py", "Sec. VII D: Casimir echo and short-time identity"),
-    ("label_locality.py", "Sec. VII D/F: low-weight Pauli scan and encoding cost"),
-    ("check_encodings.py", "Sec. VII F: encodings reproduce the spectrum, no leakage, Pauli counts"),
-    ("qsim_hardware_noise.py", "Sec. VII E: density-matrix noise model"),
+    ("qsim_echo.py", "Sec. VII C: Casimir echo and short-time identity"),
+    ("label_locality.py", "Sec. VII D/E: low-weight Pauli scan and encoding cost"),
+    ("measurement_budget.py", "Sec. VII D: shot-noise budget, separate vs centred estimator"),
+    ("check_encodings.py", "Sec. VII E: encodings reproduce the spectrum, no leakage, Pauli counts"),
+    ("qsim_hardware_noise.py", "Sec. VII D: density-matrix noise model"),
 ]
 
 

@@ -1,0 +1,35 @@
+(1) counting: L values with one state beyond the tower
+    N = 4: [4];  N = 5..80: always [2N-7, 2N-4]; exceptions: []
+(2,3) construction psi = P0^dag chi and closed-form energies
+    N= 4: Class II L = [4]
+    N= 5: Class II L = [3, 6]
+    N= 6: Class II L = [5, 8]
+    N= 7: Class II L = [7, 10]
+    N= 8: Class II L = [9, 12]
+    N= 9: Class II L = [11, 14]
+    N=10: Class II L = [13, 16]
+    N=11: Class II L = [15, 18]
+    N=12: Class II L = [17, 20]
+    N=13: Class II L = [19, 22]
+    N=14: Class II L = [21, 24]
+    N=15: Class II L = [23, 26]
+    N=16: Class II L = [25, 28]
+    max |1 - overlap| = 5.6e-16,  max | ||P0dag chi||^2 - 2(2N+5) | = 1.1e-13,  max |E - formula| = 3.4e-13
+(4) Var C2 along the bands that the Class II states terminate
+    stable_N10 K0_2: L=0:340.2, L=2:314.5, L=4:266.3, L=6:208.9, L=8:151.9, L=10:100.7, L=12:57.8, L=14:24.3, L=16:0.0
+    stable_N10 odd: L=3:427.8, L=5:281.9, L=7:176.7, L=9:98.9, L=11:41.4, L=13:0.0
+    er168_N16 K0_2: L=0:3390.9, L=2:3344.6, L=4:3237.4, L=6:3071.5, L=8:2850.9, L=10:2581.6, L=12:2272.5, L=14:1935.3, L=16:1584.1, L=18:1234.6, L=20:902.8, L=22:603.2, L=24:348.0, L=26:145.4, L=28:0.0
+    er168_N16 odd: L=3:3941.0, L=5:3811.9, L=7:3622.3, L=9:3370.3, L=11:3054.9, L=13:2678.1, L=15:2246.7, L=17:1774.3, L=19:1282.4, L=21:800.1, L=23:361.3, L=25:0.0
+(4b) monotonic decrease along both bands, N = 5..16
+    monotonic and ending at zero in all cases: True
+(5) completeness: pure count = (N^2+N+2)/2 + 2
+    holds for N = 5..16: True
+(6) wider two- and three-body PDS family
+    N=6: identity theta2 = 2N(2N+3) - C2 to 5.7e-14; max ||(H - E) psi_II|| = 4.6e-12, max |E - formula| = 1.7e-13
+    N=8: identity theta2 = 2N(2N+3) - C2 to 1.1e-13; max ||(H - E) psi_II|| = 1.7e-11, max |E - formula| = 1.4e-13
+    N=10: identity theta2 = 2N(2N+3) - C2 to 2.3e-13; max ||(H - E) psi_II|| = 3.6e-11, max |E - formula| = 2.8e-13
+    N=12: identity theta2 = 2N(2N+3) - C2 to 2.3e-13; max ||(H - E) psi_II|| = 7.1e-11, max |E - formula| = 2.8e-13
+(7) first-order critical point, N = 10
+    L=16: overlap 1.000000000000, E = 32.000000, predicted 32.000000
+    L=13: overlap 1.000000000000, E = 77.000000, predicted 77.000000
+all Class II checks passed

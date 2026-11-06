@@ -1,0 +1,11 @@
+E/h2 = -0.00, g = 5
+  n_d on window: [-0.      1.8     2.16    2.2667  3.    ]  (min gap 0.107)
+  sequential vs nested U(5): min overlap 1.000000000000;  vs nested SU(3): 0.860663
+  Var C2 of sequential states: [240.     0.   215.04   0.     0.  ],  L = [0 2 0 4 6]
+  eigenvectors of P C2 P: Var C2 = [51.84  0.    0.    0.    0.  ];  ||(1-P) C2 v||^2 = [51.84  0.    0.    0.    0.  ]
+E/h2 = 15.00, g = 3
+  n_d on window: [1.9273 2.7333 3.    ]  (min gap 0.267)
+  sequential vs nested U(5): min overlap 1.000000000000;  vs nested SU(3): 1.000000
+  Var C2 of sequential states: [0. 0. 0.],  L = [2 4 3]
+  eigenvectors of P C2 P: Var C2 = [0. 0. 0.];  ||(1-P) C2 v||^2 = [0. 0. 0.]
+degeneracy checks passed

@@ -1,5 +1,5 @@
 """
-check_encodings.py -- verify the qubit encodings used for the resource count of Sec. VII F.
+check_encodings.py -- verify the qubit encodings used for the resource count of Sec. VII E.
 
 For the stable SU(3)-PDS Hamiltonian (h0/h2 = 0.35, C/h2 = 0.0523) at N = 2 and 3 this script
 builds the qubit operator in the dense, binary-per-mode and structured one-hot (unary) encodings
@@ -7,7 +7,7 @@ and checks, for each one,
   * that its restriction to the physical Fock states reproduces the exact spectrum,
   * that it sends no amplitude from a physical state to an unphysical bit string (leakage),
 and prints the number of Pauli terms and their maximum and mean weight (the numbers quoted in
-Sec. VII F and printed again by label_locality.py).
+Sec. VII E and printed again by label_locality.py).
 
 The structured one-hot mapping writes each ladder operator as weight-2 Pauli strings on the
 mode register (see local_ops_unary_structured in ibm_encodings.py). Embedding the one-hot

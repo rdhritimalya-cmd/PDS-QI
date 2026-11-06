@@ -7,7 +7,7 @@ Code, verification scripts, logs and the recorded IBM Quantum output for
 
 Earlier versions of the manuscript (arXiv v1, repository v1.x) carried the title *State-resolved
 quantum-information fingerprints of partial dynamical symmetry in the interacting boson model*.
-Repository version 2.0.0 accompanies the revised manuscript. Section, table and figure numbers
+Repository version 2.1.0 accompanies the revised manuscript. Section, table and figure numbers
 below refer to the revised version.
 
 The classical calculations (exact diagonalization of the $sd$-IBM in the $M=0$ block) need only
@@ -31,26 +31,28 @@ different paths between runs; energies agree with exact diagonalization to about
 | Manuscript item | Script | Log |
 |---|---|---|
 | Conventions, Eq. (4), $\hat H(\sqrt2)$ relation, $[\hat H,\hat C_2[O(5)]]$ (Sec. II) | `verify_revision.py` (A, B), `test_conventions.py` | `logs/log_verify_revision.txt` |
-| Cubic-Casimir check (Sec. III) | `casimir3.py` | `logs/log_run_all.txt` |
+| Cubic-Casimir check, N = 6, 9, 12, 15 (Sec. III) | `casimir3.py` | `logs/log_casimir3.txt` |
 | Table I, even $N$; threshold scan, Table IV | `verify_revision.py` (C) | `logs/log_verify_revision.txt` |
 | Table I, odd $N$ | `oddN_scan.py` | `logs/log_oddN.txt` |
-| Class II counting, $L$ multiplicities | `consistency_checks.py` (7), `verify_revision.py` (C) | `logs/log_consistency_checks.txt` |
-| First-order critical point, both degeneracy readings (Sec. IV B, Fig. 1) | `verify_revision.py` (D), `make_fig_revision.py` | `logs/log_verify_revision.txt` |
-| Second-order point (Sec. IV C) | `verify_revision.py` (E), `consistency_checks.py` (6) | both logs |
-| Table II, random consistent-$Q$ sample, consistent-$Q$ line (Sec. IV D) | `verify_revision.py` (F, G), `false_positive.py` | `logs/log_verify_revision.txt` |
-| Controlled breaking, three measures (Sec. V, Fig. 2b) | `verify_revision.py` (H), `consistency_checks.py` (5), `make_fig_revision.py` | both logs |
+| Class II states: counting for N = 5 to 80, construction $P_0^\dagger\chi$, closed-form energies, band variances (Sec. IV B, Eqs. (10)-(13), Fig. 1) | `classII_analytic.py`, `mk_fig_classII.py` | `logs/log_classII.txt` |
+| First-order critical point, both degeneracy readings (Sec. IV C, Fig. 2) | `verify_revision.py` (D), `make_fig_revision.py` | `logs/log_verify_revision.txt` |
+| Second-order point (Sec. IV D) | `verify_revision.py` (E), `consistency_checks.py` (6) | both logs |
+| Table II, random consistent-$Q$ sample, consistent-$Q$ line (Sec. IV E) | `verify_revision.py` (F, G), `false_positive.py` | `logs/log_verify_revision.txt` |
+| Controlled breaking, three measures (Sec. V, Fig. 3) | `verify_revision.py` (H), `consistency_checks.py` (5), `make_fig_revision.py` | both logs |
 | Mixing versus energy at $^{168}$Er (Sec. V) | `energy_mixing.py` | `logs/log_energy_mixing.txt` |
-| $^{168}$Er anchor, admixtures, $B(E2)$ (Sec. VI, Fig. 3) | `er168_anchor.py`, `consistency_checks.py` (1), `mk_fig_er168.py` | `logs/log_run_all.txt` |
+| $^{168}$Er anchor, admixtures, $B(E2)$ (Sec. VI, Fig. 4) | `er168_anchor.py`, `consistency_checks.py` (1), `mk_fig_er168.py` | `logs/log_run_all.txt` |
 | Kremer et al. $\Delta\sigma$ reproduction (Sec. VIII) | `kremer.py` | printed output |
-| Encodings and spectrum check, Table III (Sec. VII A) | `ibm_encodings.py`, `qsim_trotter.py` | `logs/log_encodings.txt` |
-| Encoding cost and leakage check (Sec. VII F) | `check_encodings.py`, `label_locality.py` | `logs/log_encodings.txt`, `logs/log_run_all.txt` |
-| VQD preparation and degeneracy resolution (Sec. VII B, Fig. 4a) | `qsim_demo.py`, `make_fig_qsim.py` | `logs/log_run_all.txt` |
-| Trotter benchmark (Sec. VII C, Fig. 4b) | `qsim_trotter.py`, `make_fig_qsim.py` | `logs/log_trotter_t0.5.txt` |
-| Casimir echo (Sec. VII D, Fig. 6) | `qsim_echo.py`, `make_fig_additions.py` | `logs/log_run_all.txt` |
+| Encodings and spectrum check (Sec. VII A) | `ibm_encodings.py`, `qsim_trotter.py` | `logs/log_encodings.txt` |
+| VQD preparation and degeneracy resolution (Sec. VII B, Fig. 5a) | `qsim_demo.py`, `make_fig_qsim.py` | `logs/log_run_all.txt` |
+| Whole-window vs nested refinement, restricted-Casimir variance identity (Sec. VII B, App. A) | `degeneracy_check.py` | `logs/log_degeneracy.txt` |
+| Trotter benchmark (Sec. VII C, Fig. 5b) | `qsim_trotter.py`, `make_fig_qsim.py` | `logs/log_trotter_t0.5.txt` |
+| Casimir echo (Sec. VII C, Fig. 7) | `qsim_echo.py`, `make_fig_additions.py` | `logs/log_run_all.txt` |
 | Low-weight Pauli scan (Sec. VII D) | `label_locality.py` | `logs/log_run_all.txt` |
-| Noise model (Sec. VII E, Fig. 7) | `qsim_hardware_noise.py`, `make_fig_additions.py` | `logs/log_noise.txt` |
-| Hardware run (Sec. VII E, Fig. 8) | `hardware_run_kingston.py`, `kingston_device_N3.json`, `make_fig_kingston.py` | JSON file |
-| Ansatz drawing (Fig. 5) | `make_fig_qsim.py` | |
+| Noise model (Sec. VII D, Fig. 8) | `qsim_hardware_noise.py`, `make_fig_additions.py` | `logs/log_noise.txt` |
+| Hardware run (Sec. VII D, Fig. 9) | `hardware_run_kingston.py`, `kingston_device_N3.json`, `make_fig_kingston.py` | JSON file |
+| Shot-noise budget, separate vs centred estimator (Sec. VII D, Table III) | `measurement_budget.py` | `logs/log_measurement_budget.txt` |
+| Encoding cost and leakage check (Sec. VII E) | `check_encodings.py`, `label_locality.py` | `logs/log_encodings.txt`, `logs/log_run_all.txt` |
+| Ansatz drawing (Fig. 6) | `make_fig_qsim.py` | |
 
 ## Core modules
 
@@ -85,10 +87,11 @@ sequentially rather than in the nested way of Appendix A; the revised numbers co
 
 Please cite the manuscript above and the archived software release:
 
-> D. Roy, PDS-QI: code and data, version 2.0.0, Zenodo (2026),
+> D. Roy, PDS-QI: code and data, Zenodo (2026). Use the DOI of the release you used; version 2.0.0 is
 > [doi:10.5281/zenodo.23984936](https://doi.org/10.5281/zenodo.23984936).
 
-Earlier versions of the code have their own records on Zenodo.
+Version 2.1.0 adds the analytic Class II construction, the degeneracy check and the measurement
+budget. Each release has its own record on Zenodo.
 
 ## License
 
